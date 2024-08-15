@@ -1,5 +1,11 @@
+import Users from "../../modules/users/Users";
+
 const Dashboard = () => {
-  return <p className="">Dashboard</p>;
+  return (
+    <>
+      <Users />
+    </>
+  );
 };
 
 export default Dashboard;
