@@ -6,7 +6,6 @@ const Table = ({ data: users = [], columnsTitle = [] }) => {
 
   return (
     <>
-      {/* {users && users.length>0 ?} */}
       <div className="overflow-x-auto rounded-md mx-2">
         <table className="min-w-full bg-white">
           <thead className="bg-slate-100">
