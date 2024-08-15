@@ -8,7 +8,7 @@ const User = () => {
 
   return (
     <div className="text-2xl">
-      <div className="text-4xl font-bold text-center my-7 border-b-2 mx-8">
+      <div className="text-4xl font-bold text-center my-7 mx-8">
         <svg
           className="w-6 h-6 text-gray-800 cursor-pointer"
           aria-hidden="true"
@@ -25,7 +25,9 @@ const User = () => {
             d="M13 5H1m0 0 4 4M1 5l4-4"
           />
         </svg>
-        <span>User Details</span>
+        <span className="mb-5">User Details</span>
+        <div className=" border-b-2 mt-3"></div>
+        <hr />
       </div>
       <TreeNode node={userData} />
     </div>

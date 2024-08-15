@@ -1,10 +1,8 @@
-// import { useEffect } from "react";
 import { useEffect, useState } from "react";
 import SearchBar from "../../components/elements/SearchBar";
 import Table from "../../components/elements/Table";
 import { useFetchAllUsers } from "./core/hooks/useUsers";
 import Pagination from "../../components/general/Pagination";
-// import Modal from "../../components/elements/Modal";
 
 const Users = () => {
   const { getUsersInfo } = useFetchAllUsers();
@@ -23,7 +21,7 @@ const Users = () => {
   const handleSearchByName = (e) => {
     e.preventDefault();
     const searchedUsers = users.filter((user) =>
-      user.name.includes(inputSearch)
+      user?.name?.toLowerCase().includes(inputSearch.toLowerCase())
     );
     setUsers(searchedUsers);
   };
@@ -43,26 +41,29 @@ const Users = () => {
     });
   };
 
-
   useEffect(() => {
     getAllUsers();
   }, [currentPage]);
 
   return (
-    <div className="flex flex-col">
-      <SearchBar
-        callback={handleSearchByName}
-        inputSearch={inputSearch}
-        setInputSearch={setInputSearch}
-      />
-      <Table data={users} columnsTitle={keys} />
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
-      {/* <Modal/> */}
-    </div>
+    <>
+      {users && (
+        <div className="flex flex-col">
+          <SearchBar
+            callback={handleSearchByName}
+            inputSearch={inputSearch}
+            setInputSearch={setInputSearch}
+            getAllUsers={getAllUsers}
+          />
+          <Table data={users} columnsTitle={keys} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </div>
+      )}
+    </>
   );
 };
 
